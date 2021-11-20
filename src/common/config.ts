@@ -11,11 +11,14 @@ const config = {
   },
   database: {
     mysql: {
-      host: process.env.DB_HOST,
+      host: process.env.DB_HOST || 'localhost',
+      user: process.env.DB_USER || 'admin',
+      password: process.env.DB_PASS || 'admin',
       port: Number(process.env.DB_PORT) || 3306,
-      user: process.env.DB_USER,
-      pass: process.env.DB_PASS,
-      name: process.env.DB_NAME,
+      database: process.env.DB_NAME || 'finances',
+      waitForConnections: true,
+      multipleStatements: true,
+      connectionLimit: 100,
     },
   },
 };

@@ -27,6 +27,7 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
+    'no-empty-function': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-underscore-dangle': 'off',
