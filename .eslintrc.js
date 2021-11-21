@@ -26,6 +26,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'no-unsafe-any': 'off',
     'prettier/prettier': 'error',
     'no-empty-function': 'off',
     'import/prefer-default-export': 'off',
@@ -54,7 +55,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        'newlines-between': 'never',
+        'newlines-between': 'always',
         groups: [
           ['builtin', 'external'],
           ['internal', 'parent', 'sibling', 'index'],

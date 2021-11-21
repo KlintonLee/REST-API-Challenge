@@ -6,7 +6,7 @@ export class CreatePessoas1637298185984 implements MigrationInterface {
       CREATE TABLE pessoas (
         id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR(50) NOT NULL,
-        cpf VARCHAR(11) NOT NULL,
+        cpf VARCHAR(11) NOT NULL UNIQUE,
         dataNascimento datetime NOT NULL
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);

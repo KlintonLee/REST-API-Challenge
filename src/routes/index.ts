@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { customerRouter } from '../modules/customers/routes';
 import { accountsRouter } from '../modules/accounts/routes';
 

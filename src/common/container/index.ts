@@ -1,4 +1,5 @@
 import { container } from 'tsyringe';
+
 import config from '../config';
 import { MariaDbConnection } from '../database/mariadb';
 
