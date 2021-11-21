@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CustomersRepository } from '../../customers/repositories/CustomersRepository';
 import { AccountsRepository } from '../repositories/AccountsRepository';
+import { TransactionsRepository } from '../repositories/TransactionsRepository';
 import { BlockAccountService } from '../services/BlockAccountService';
 import { CreateAccountService } from '../services/CreateAccountService';
 import { DepositValueService } from '../services/DepositValueService';
@@ -30,7 +31,8 @@ class AccountsController {
     const { valor } = request.body;
 
     const accountsRepository = container.resolve(AccountsRepository);
-    const depositValueService = new DepositValueService(accountsRepository);
+    const transactionsRepository = container.resolve(TransactionsRepository);
+    const depositValueService = new DepositValueService(accountsRepository, transactionsRepository);
 
     await depositValueService.execute(Number(accountId), Number(valor));
 
@@ -42,7 +44,7 @@ class AccountsController {
 
     const accountsRepository = container.resolve(AccountsRepository);
     const showBalanceService = new ShowBalanceService(accountsRepository);
-
+    console.log(accountId);
     const balance = await showBalanceService.execute(Number(accountId));
 
     return response.json({ balance });
@@ -53,7 +55,8 @@ class AccountsController {
     const { valor } = request.body;
 
     const accountsRepository = container.resolve(AccountsRepository);
-    const withdrawalService = new WithdrawalService(accountsRepository);
+    const transactionsRepository = container.resolve(TransactionsRepository);
+    const withdrawalService = new WithdrawalService(accountsRepository, transactionsRepository);
 
     const balance = await withdrawalService.execute(Number(accountId), Number(valor));
 

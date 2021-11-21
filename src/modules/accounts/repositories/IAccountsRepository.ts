@@ -3,7 +3,7 @@ import { ICreateAccountDTO } from '../dtos/ICreateAccountDTO';
 import { IAccount } from '../models/IAccount';
 
 interface IBalance extends Array<RowDataPacket> {
-  balance: number;
+  saldo: number;
 }
 
 interface IAccountsRepository {

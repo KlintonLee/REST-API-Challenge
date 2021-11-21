@@ -51,9 +51,9 @@ class AccountsRepository implements IAccountsRepository {
       WHERE id = ${accountId};
     `);
 
-    const { balance } = rows;
+    const { saldo } = rows[0];
 
-    return balance;
+    return saldo;
   }
 
   async blockAccount(accountId: number): Promise<void> {
