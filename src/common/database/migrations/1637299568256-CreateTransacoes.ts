@@ -6,7 +6,7 @@ export class CreateTransacoes1637299568256 implements MigrationInterface {
       CREATE TABLE transacoes (
         id INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         idConta INT(8) NOT NULL,
-        valor NUMERIC(9, 2),
+        valor NUMERIC(9, 2) NOT NULL,
         tipoTransacao enum('deposito', 'saque') NOT NULL,
         dataTransacao TIMESTAMP DEFAULT CURRENT_TIME,
 

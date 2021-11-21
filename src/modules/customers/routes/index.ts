@@ -4,7 +4,7 @@ import { CustomersController } from '../controllers/CustomersController';
 const customerRouter = Router();
 const customersController = new CustomersController();
 
-customerRouter.post('/customer', customersController.create);
-customerRouter.get('/customer/:customerId', customersController.show);
+customerRouter.post('/', customersController.create);
+customerRouter.get('/:customerId', customersController.show);
 
 export { customerRouter };

@@ -6,7 +6,7 @@ export class CreateContas1637298520061 implements MigrationInterface {
       CREATE TABLE contas (
         id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
         idPessoa INT(11) NOT NULL,
-        saldo NUMERIC(10, 2) NOT NULL,
+        saldo NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
         limiteSaqueDiario NUMERIC(10, 2) NOT NULL,
         flagAtivo BOOLEAN NOT NULL DEFAULT true,
         tipoConta INT(1) NOT NULL,
