@@ -1,17 +1,11 @@
-import { RowDataPacket } from 'mysql2/promise';
 import { ICreateAccountDTO } from '../dtos/ICreateAccountDTO';
 import { IAccount } from '../models/IAccount';
 
-interface IBalance extends Array<RowDataPacket> {
-  saldo: number;
-}
-
 interface IAccountsRepository {
-  create(data: ICreateAccountDTO): Promise<void>;
+  create(data: ICreateAccountDTO): Promise<number | null>;
   findById(accountId: number): Promise<IAccount | null>;
-  updateBalance(accountId: number, newBalance: number): Promise<void>;
-  getBalance(accountId: number): Promise<number>;
-  blockAccount(accountId: number): Promise<void>;
+  updateBalance(accountId: number, newBalance: number): Promise<number | null>;
+  blockAccount(accountId: number): Promise<number | null>;
 }
 
-export { IBalance, IAccountsRepository };
+export { IAccountsRepository };

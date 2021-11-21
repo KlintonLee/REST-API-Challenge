@@ -25,7 +25,6 @@ class CustomersController {
       return response.status(201).json({ message: 'Usuário criado com sucesso' });
     } catch (_e) {
       const err = _e as ExceptionHandler;
-      console.log(err);
 
       return response.status(err.statusCode).json({ message: err.message });
     }
