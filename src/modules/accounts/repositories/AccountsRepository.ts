@@ -2,6 +2,7 @@ import { Pool } from 'mysql2/promise';
 import { inject, injectable } from 'tsyringe';
 import { MariaDbConnection } from '../../../common/database/mariadb';
 import { ICreateAccountDTO } from '../dtos/ICreateAccountDTO';
+import { IAccount } from '../models/IAccount';
 import { IAccountsRepository, IBalance } from './IAccountsRepository';
 
 @injectable()
@@ -22,10 +23,23 @@ class AccountsRepository implements IAccountsRepository {
     `);
   }
 
-  async deposit(accountId: number, value: number): Promise<void> {
+  async findById(accountId: number): Promise<IAccount | null> {
+    const [rows] = await this.connection.query<IAccount[]>(`
+      SELECT * FROM contas
+      WHERE id = ${accountId}
+    `);
+
+    if (rows.length !== 0) {
+      return rows[0];
+    }
+
+    return null;
+  }
+
+  async updateBalance(accountId: number, newBalance: number): Promise<void> {
     await this.connection.query(`
       UPDATE contas
-        SET saldo = saldo + ${value}
+        SET saldo = ${newBalance}
       WHERE id = ${accountId};
     `);
   }
@@ -40,22 +54,6 @@ class AccountsRepository implements IAccountsRepository {
     const { balance } = rows;
 
     return balance;
-  }
-
-  async withdrawal(accountId: number, value: number): Promise<number> {
-    const balance = await this.getBalance(accountId);
-
-    if (balance >= value) {
-      await this.connection.query(`
-        UPDATE contas
-          SET saldo = saldo - ${value}
-        WHERE id = ${accountId};
-      `);
-
-      return value;
-    }
-
-    return 0;
   }
 
   async blockAccount(accountId: number): Promise<void> {
