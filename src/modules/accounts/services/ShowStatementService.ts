@@ -1,4 +1,5 @@
 import { addDays, format, subDays } from 'date-fns';
+
 import { ITransaction } from '../models/ITransaction';
 import { ITransactionsRepository } from '../repositories/ITransactionsRepository';
 
@@ -12,8 +13,6 @@ class ShowStatementService {
     const formatInitialDate = format(initialDate, 'yyyy-MM-dd HH:mm:ss');
     const formatFinalDate = format(finalDate, 'yyyy-MM-dd HH:mm:ss');
 
-    console.log(formatInitialDate);
-    console.log(formatFinalDate);
     const statements = await this.transactionsRepository.statement(
       accountId,
       formatInitialDate,

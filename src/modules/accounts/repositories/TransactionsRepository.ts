@@ -1,5 +1,6 @@
 import { Pool } from 'mysql2/promise';
 import { inject, injectable } from 'tsyringe';
+
 import { MariaDbConnection } from '../../../common/database/mariadb';
 import { ICreateTransactionDTO } from '../dtos/ICreateTransactionDTO';
 import { ITransaction } from '../models/ITransaction';

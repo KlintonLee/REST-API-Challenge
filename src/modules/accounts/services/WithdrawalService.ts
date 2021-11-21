@@ -1,6 +1,7 @@
-import { format } from 'date-fns';
+import { endOfToday, format, startOfToday } from 'date-fns';
 
 import { ExceptionHandler } from '../../../common/ExceptionHandler';
+import { DailyWithdrawalLimitReached } from '../business/DailyWithdrawalLimitReached';
 import { IAccountsRepository } from '../repositories/IAccountsRepository';
 import { ITransactionsRepository } from '../repositories/ITransactionsRepository';
 
@@ -20,13 +21,29 @@ class WithdrawalService {
       throw new ExceptionHandler('Conta bloqueada,entre em contato com o seu gerente', 400);
     }
 
+    const startOfDay = format(startOfToday(), 'yyyy-MM-dd HH:mm:ss');
+    const endOfDay = format(endOfToday(), 'yyyy-MM-dd HH:mm:ss');
+    const transactionsOfToday = await this.transactionsRepository.statement(
+      accountId,
+      startOfDay,
+      endOfDay
+    );
+
+    const dailyWithdrawalLimitReached = new DailyWithdrawalLimitReached(
+      transactionsOfToday,
+      accountExists.limiteSaqueDiario,
+      value
+    ).execute();
+    if (dailyWithdrawalLimitReached) {
+      throw new ExceptionHandler('Limite de saque diário atingido');
+    }
+
     const newBalance = Number(accountExists.saldo) - value;
     if (newBalance < 0) {
       throw new ExceptionHandler('Saldo insuficiente para efetuarmos esta ação', 400);
     }
 
     const currentDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-
     const affectedRows = await this.accountsRepository.updateBalance(accountId, newBalance);
     if (!affectedRows) {
       throw new ExceptionHandler(
