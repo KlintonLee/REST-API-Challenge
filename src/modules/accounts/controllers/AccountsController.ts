@@ -4,6 +4,7 @@ import { CustomersRepository } from '../../customers/repositories/CustomersRepos
 import { AccountsRepository } from '../repositories/AccountsRepository';
 import { CreateAccountService } from '../services/CreateAccountService';
 import { DepositValueService } from '../services/DepositValueService';
+import { ShowBalanceService } from '../services/ShowBalanceService';
 
 class AccountsController {
   async create(request: Request, response: Response): Promise<Response> {
@@ -32,6 +33,17 @@ class AccountsController {
     await depositValueService.execute(Number(accountId), Number(valor));
 
     return response.json({ ok: true });
+  }
+
+  async showBalance(request: Request, response: Response): Promise<Response> {
+    const { accountId } = request.params;
+
+    const accountsRepository = container.resolve(AccountsRepository);
+    const showBalanceService = new ShowBalanceService(accountsRepository);
+
+    const balance = await showBalanceService.execute(Number(accountId));
+
+    return response.json({ balance });
   }
 }
 
