@@ -9,5 +9,6 @@ accountsRouter.post('/', accountsController.create);
 accountsRouter.get('/:accountId/balance', accountsController.showBalance);
 accountsRouter.patch('/:accountId/deposit', accountsController.deposit);
 accountsRouter.patch('/:accountId/withdrawal', accountsController.withdrawal);
+accountsRouter.patch('/:accountId/block', accountsController.blockAccount);
 
 export { accountsRouter };

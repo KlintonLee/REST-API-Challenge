@@ -4,13 +4,13 @@ class ShowBalanceService {
   constructor(private accountsRepository: IAccountsRepository) {}
 
   async execute(accountId: number): Promise<number | null> {
-    const accountExists = await this.accountsRepository.findById(accountId);
+    const accountExists = await this.accountsRepository.getBalance(accountId);
 
     if (!accountExists) {
       return null;
     }
 
-    return accountExists.saldo;
+    return accountExists;
   }
 }
 

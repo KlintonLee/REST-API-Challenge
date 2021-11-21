@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CustomersRepository } from '../../customers/repositories/CustomersRepository';
 import { AccountsRepository } from '../repositories/AccountsRepository';
+import { BlockAccountService } from '../services/BlockAccountService';
 import { CreateAccountService } from '../services/CreateAccountService';
 import { DepositValueService } from '../services/DepositValueService';
 import { ShowBalanceService } from '../services/ShowBalanceService';
@@ -57,6 +58,17 @@ class AccountsController {
     const balance = await withdrawalService.execute(Number(accountId), Number(valor));
 
     return response.json({ balance });
+  }
+
+  async blockAccount(request: Request, response: Response): Promise<Response> {
+    const { accountId } = request.params;
+
+    const accountsRepository = container.resolve(AccountsRepository);
+    const blockAccountService = new BlockAccountService(accountsRepository);
+
+    await blockAccountService.execute(Number(accountId));
+
+    return response.json();
   }
 }
 
