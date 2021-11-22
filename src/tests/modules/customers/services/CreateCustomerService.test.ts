@@ -5,7 +5,7 @@ import { FakeCustomersRepository } from '../fakes/FakeCustomersRepository';
 describe('CreateCustomerService.test.ts', () => {
   it(`Given params as { nome: "John Doe", cpf: "12345678900", dataNascimento: "2021-11-21" }
       When call execute method with those params from CreateCustomerService class
-      Then should throw and integer as user ID`, async () => {
+      Then should return and integer as user ID`, async () => {
     const fakeCustomersRepository = new FakeCustomersRepository();
     const createCustomerService = new CreateCustomerService(fakeCustomersRepository);
 
@@ -25,7 +25,8 @@ describe('CreateCustomerService.test.ts', () => {
     const fakeCustomersRepository = new FakeCustomersRepository();
     const createCustomerService = new CreateCustomerService(fakeCustomersRepository);
 
-    await createCustomerService.execute({
+    fakeCustomersRepository.customers.push({
+      id: 1,
       nome: 'John Doe',
       cpf: '12345678900',
       dataNascimento: '2021-11-21',

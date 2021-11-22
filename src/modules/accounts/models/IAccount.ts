@@ -1,6 +1,4 @@
-import { RowDataPacket } from 'mysql2/promise';
-
-interface IAccount extends RowDataPacket {
+interface IAccount {
   id: number;
 
   idPessoa: number;
@@ -13,7 +11,7 @@ interface IAccount extends RowDataPacket {
 
   tipoConta: number;
 
-  dataCriacao: Date;
+  dataCriacao: string;
 }
 
 export { IAccount };

@@ -13,7 +13,7 @@ class FakeCustomersRepository implements ICustomersRepository {
     }
 
     const customer: ICustomer = {
-      id: Math.floor(Math.random() * 10),
+      id: 1,
       nome,
       cpf,
       dataNascimento,

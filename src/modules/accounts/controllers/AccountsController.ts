@@ -23,13 +23,13 @@ class AccountsController {
         accountsRepository
       );
 
-      await createAccountService.execute({
+      const insertedId = await createAccountService.execute({
         idPessoa: Number(idPessoa),
         limiteSaqueDiario: Number(limiteSaqueDiario),
         tipoConta,
       });
 
-      return response.json({ messag: 'Conta criada com sucesso' });
+      return response.json({ messag: `Conta criada com sucesso, o ID da conta é ${insertedId}` });
     } catch (_e) {
       const err = _e as ExceptionHandler;
 

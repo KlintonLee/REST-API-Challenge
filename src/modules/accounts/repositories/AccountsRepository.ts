@@ -11,6 +11,8 @@ interface IRowData extends Array<RowDataPacket> {
   insertId: number;
 }
 
+interface IAccountRowData extends IAccount, RowDataPacket {}
+
 @injectable()
 class AccountsRepository implements IAccountsRepository {
   private connection: Pool;
@@ -45,7 +47,7 @@ class AccountsRepository implements IAccountsRepository {
   }
 
   async findById(accountId: number): Promise<IAccount | null> {
-    const [rows] = await this.connection.query<IAccount[]>(`
+    const [rows] = await this.connection.query<IAccountRowData[]>(`
       SELECT * FROM contas
       WHERE id = ${accountId}
     `);

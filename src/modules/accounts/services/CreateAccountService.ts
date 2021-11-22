@@ -10,7 +10,7 @@ class CreateAccountService {
     private accountsRepository: IAccountsRepository
   ) {}
 
-  async execute({ idPessoa, limiteSaqueDiario, tipoConta }: ICreateAccountDTO): Promise<void> {
+  async execute({ idPessoa, limiteSaqueDiario, tipoConta }: ICreateAccountDTO): Promise<number> {
     const customerExists = await this.customersRepository.findCustomerById(idPessoa);
 
     if (!customerExists) {
@@ -26,6 +26,8 @@ class CreateAccountService {
     if (!insertedId) {
       throw new ExceptionHandler('Ocorreu um erro ao tentar criar a conta do usuário');
     }
+
+    return insertedId;
   }
 }
 
