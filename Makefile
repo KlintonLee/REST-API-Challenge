@@ -11,12 +11,18 @@ all:
 
 up:
 	${RUN_MIGRATIONS}
+	npm run dev
+
+build:
+	${RUN_MIGRATIONS}
+	npm run build
+	node dist/server.js
 
 down:
 	${DOCKER_DOWN}
 	make clean
 
 clean:
-	rm -rf volumes node_modules logs
+	rm -rf volumes node_modules logs dist coverage
 
-.PHONY : all up down clean
+.PHONY : all up build down clean
