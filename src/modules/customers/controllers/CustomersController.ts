@@ -6,10 +6,18 @@ import { CustomersRepository } from '../repositories/CustomersRepository';
 import { CreateCustomerService } from '../services/CreateCustomerService';
 import { FindCustomerByIdService } from '../services/FindCustomerByIdService';
 import { ExceptionHandler } from '../../../common/ExceptionHandler';
+import { Logger } from '../../../common/Logger';
 
 class CustomersController {
   async create(request: Request, response: Response): Promise<Response> {
+    const path = request.url;
     const { nome, cpf, dataNascimento } = request.body;
+
+    const logger = Logger.getInstance().get();
+    logger.info(
+      'src/modules/customers/controllers/CustomersController.ts - method create - Starting to create a new customer',
+      { path }
+    );
 
     try {
       const customersRepository = container.resolve(CustomersRepository);
@@ -33,7 +41,14 @@ class CustomersController {
   }
 
   async show(request: Request, response: Response): Promise<Response> {
+    const path = request.url;
     const { customerId } = request.params;
+
+    const logger = Logger.getInstance().get();
+    logger.info(
+      'src/modules/customers/controllers/CustomersController.ts - method show - Getting a customer by ID',
+      { path, customerId }
+    );
 
     try {
       const customersRepository = container.resolve(CustomersRepository);
