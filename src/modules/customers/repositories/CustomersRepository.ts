@@ -10,6 +10,8 @@ interface IInsertId extends Array<RowDataPacket> {
   insertId: number;
 }
 
+interface ICustomerRowData extends ICustomer, Array<RowDataPacket> {}
+
 @injectable()
 class CustomersRepository implements ICustomersRepository {
   private connection: Pool;
@@ -40,7 +42,7 @@ class CustomersRepository implements ICustomersRepository {
   }
 
   async findCustomerById(customerId: number): Promise<ICustomer | null> {
-    const [rows] = await this.connection.query<ICustomer[]>(`
+    const [rows] = await this.connection.query<ICustomerRowData[]>(`
       SELECT * FROM pessoas
       WHERE id = ${customerId};
     `);

@@ -16,13 +16,15 @@ class CustomersController {
       const createCustomerService = new CreateCustomerService(customersRepository);
 
       const formatToDate = format(new Date(dataNascimento), 'yyyy-MM-dd HH:mm:ss');
-      await createCustomerService.execute({
+      const insertedId = await createCustomerService.execute({
         nome,
         cpf,
         dataNascimento: formatToDate,
       });
 
-      return response.status(201).json({ message: 'Usuário criado com sucesso' });
+      return response
+        .status(201)
+        .json({ message: `Usuário criado com sucesso, o id gerado é ${insertedId}` });
     } catch (_e) {
       const err = _e as ExceptionHandler;
 

@@ -1,6 +1,4 @@
-import { RowDataPacket } from 'mysql2/promise';
-
-interface ICustomer extends RowDataPacket {
+interface ICustomer {
   id: number;
 
   nome: string;
