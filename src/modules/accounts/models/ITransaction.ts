@@ -1,6 +1,4 @@
-import { RowDataPacket } from 'mysql2/promise';
-
-interface ITransaction extends RowDataPacket {
+interface ITransaction {
   id: number;
 
   idConta: number;
@@ -9,7 +7,7 @@ interface ITransaction extends RowDataPacket {
 
   tipoTransacao: 'deposito' | 'saque';
 
-  dataTransacao: Date;
+  dataTransacao: string;
 }
 
 export { ITransaction };

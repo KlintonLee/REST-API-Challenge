@@ -34,6 +34,7 @@ class WithdrawalService {
       accountExists.limiteSaqueDiario,
       value
     ).execute();
+
     if (dailyWithdrawalLimitReached) {
       throw new ExceptionHandler('Limite de saque diário atingido');
     }
