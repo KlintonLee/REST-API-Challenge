@@ -1,5 +1,5 @@
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { CreateAccountService } from '../../../../modules/accounts/services/CreateAccountService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { CreateAccountService } from '../../../../src/modules/accounts/services/CreateAccountService';
 import { FakeCustomersRepository } from '../../customers/fakes/FakeCustomersRepository';
 import { FakeAccountsRepository } from '../fakes/FakeAccountsRepository';
 

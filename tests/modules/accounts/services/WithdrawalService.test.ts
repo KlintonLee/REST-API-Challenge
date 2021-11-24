@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { IAccount } from '../../../../modules/accounts/models/IAccount';
-import { ITransaction } from '../../../../modules/accounts/models/ITransaction';
-import { WithdrawalService } from '../../../../modules/accounts/services/WithdrawalService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { IAccount } from '../../../../src/modules/accounts/models/IAccount';
+import { ITransaction } from '../../../../src/modules/accounts/models/ITransaction';
+import { WithdrawalService } from '../../../../src/modules/accounts/services/WithdrawalService';
 import { FakeAccountsRepository } from '../fakes/FakeAccountsRepository';
 import { FakeTransactionsRepository } from '../fakes/FakeTransactionsRepository';
 

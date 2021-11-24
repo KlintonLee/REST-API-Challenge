@@ -1,5 +1,5 @@
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { CreateCustomerService } from '../../../../modules/customers/services/CreateCustomerService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { CreateCustomerService } from '../../../../src/modules/customers/services/CreateCustomerService';
 import { FakeCustomersRepository } from '../fakes/FakeCustomersRepository';
 
 describe('CreateCustomerService.test.ts', () => {

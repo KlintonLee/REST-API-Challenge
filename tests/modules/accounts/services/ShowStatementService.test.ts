@@ -1,5 +1,5 @@
-import { ITransaction } from '../../../../modules/accounts/models/ITransaction';
-import { ShowStatementService } from '../../../../modules/accounts/services/ShowStatementService';
+import { ITransaction } from '../../../../src/modules/accounts/models/ITransaction';
+import { ShowStatementService } from '../../../../src/modules/accounts/services/ShowStatementService';
 import { FakeTransactionsRepository } from '../fakes/FakeTransactionsRepository';
 
 describe('ShowStatementService.test.ts', () => {

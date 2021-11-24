@@ -1,6 +1,6 @@
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { IAccount } from '../../../../modules/accounts/models/IAccount';
-import { DepositValueService } from '../../../../modules/accounts/services/DepositValueService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { IAccount } from '../../../../src/modules/accounts/models/IAccount';
+import { DepositValueService } from '../../../../src/modules/accounts/services/DepositValueService';
 import { FakeAccountsRepository } from '../fakes/FakeAccountsRepository';
 import { FakeTransactionsRepository } from '../fakes/FakeTransactionsRepository';
 

@@ -1,8 +1,8 @@
 import { parseISO, isAfter, isBefore } from 'date-fns';
 
-import { ICreateTransactionDTO } from '../../../../modules/accounts/dtos/ICreateTransactionDTO';
-import { ITransaction } from '../../../../modules/accounts/models/ITransaction';
-import { ITransactionsRepository } from '../../../../modules/accounts/repositories/ITransactionsRepository';
+import { ICreateTransactionDTO } from '../../../../src/modules/accounts/dtos/ICreateTransactionDTO';
+import { ITransaction } from '../../../../src/modules/accounts/models/ITransaction';
+import { ITransactionsRepository } from '../../../../src/modules/accounts/repositories/ITransactionsRepository';
 
 class FakeTransactionsRepository implements ITransactionsRepository {
   public transactions: Array<ITransaction> = [];

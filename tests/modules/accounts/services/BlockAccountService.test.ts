@@ -1,5 +1,5 @@
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { BlockAccountService } from '../../../../modules/accounts/services/BlockAccountService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { BlockAccountService } from '../../../../src/modules/accounts/services/BlockAccountService';
 import { FakeAccountsRepository } from '../fakes/FakeAccountsRepository';
 
 describe('BlockAccountService.test.ts', () => {

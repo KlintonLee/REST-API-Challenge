@@ -1,6 +1,6 @@
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { IAccount } from '../../../../modules/accounts/models/IAccount';
-import { ShowBalanceService } from '../../../../modules/accounts/services/ShowBalanceService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { IAccount } from '../../../../src/modules/accounts/models/IAccount';
+import { ShowBalanceService } from '../../../../src/modules/accounts/services/ShowBalanceService';
 import { FakeAccountsRepository } from '../fakes/FakeAccountsRepository';
 
 describe('ShowBalanceService.test.ts', () => {

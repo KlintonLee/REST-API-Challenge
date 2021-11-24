@@ -1,5 +1,5 @@
-import { ExceptionHandler } from '../../../../common/ExceptionHandler';
-import { FindCustomerByIdService } from '../../../../modules/customers/services/FindCustomerByIdService';
+import { ExceptionHandler } from '../../../../src/common/ExceptionHandler';
+import { FindCustomerByIdService } from '../../../../src/modules/customers/services/FindCustomerByIdService';
 import { FakeCustomersRepository } from '../fakes/FakeCustomersRepository';
 
 describe('FindCustomerByIdService.test.ts', () => {

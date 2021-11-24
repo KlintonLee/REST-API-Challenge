@@ -1,5 +1,5 @@
-import { DailyWithdrawalLimitReached } from '../../../../modules/accounts/business/DailyWithdrawalLimitReached';
-import { ITransaction } from '../../../../modules/accounts/models/ITransaction';
+import { DailyWithdrawalLimitReached } from '../../../../src/modules/accounts/business/DailyWithdrawalLimitReached';
+import { ITransaction } from '../../../../src/modules/accounts/models/ITransaction';
 
 describe('DailyWithdrawalLimitReached.test.ts', () => {
   const transactionsMock: Array<ITransaction> = [

@@ -1,6 +1,6 @@
-import { ICreateCustomerDTO } from '../../../../modules/customers/dtos/ICreateCustomerDTO';
-import { ICustomer } from '../../../../modules/customers/models/ICustomer';
-import { ICustomersRepository } from '../../../../modules/customers/repositories/ICustomersRepository';
+import { ICreateCustomerDTO } from '../../../../src/modules/customers/dtos/ICreateCustomerDTO';
+import { ICustomer } from '../../../../src/modules/customers/models/ICustomer';
+import { ICustomersRepository } from '../../../../src/modules/customers/repositories/ICustomersRepository';
 
 class FakeCustomersRepository implements ICustomersRepository {
   public customers: Array<ICustomer> = [];

@@ -1,6 +1,6 @@
-import { ICreateAccountDTO } from '../../../../modules/accounts/dtos/ICreateAccountDTO';
-import { IAccount } from '../../../../modules/accounts/models/IAccount';
-import { IAccountsRepository } from '../../../../modules/accounts/repositories/IAccountsRepository';
+import { ICreateAccountDTO } from '../../../../src/modules/accounts/dtos/ICreateAccountDTO';
+import { IAccount } from '../../../../src/modules/accounts/models/IAccount';
+import { IAccountsRepository } from '../../../../src/modules/accounts/repositories/IAccountsRepository';
 
 class FakeAccountsRepository implements IAccountsRepository {
   public accounts: Array<IAccount> = [];
